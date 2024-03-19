@@ -296,6 +296,40 @@ require('lazy').setup({
     end,
   },
 
+  {
+    -- Theme inspired by Atom
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      vim.cmd [[
+            " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
+            " Important!!
+            " For dark version.
+            set background=dark
+            " Set contrast.
+            " This configuration option should be placed before `colorscheme gruvbox-material`.
+            " Available values: 'hard', 'medium'(default), 'soft'
+            let g:gruvbox_material_background = 'hard'
+            " For better performance
+            let g:gruvbox_material_better_performance = 1
+            let g:gruvbox_material_enable_italic = 1
+
+            let g:gruvbox_material_diagnostic_text_highlight = 1
+            " let g:gruvbox_material_diagnostic_line_highlight = 1
+            let g:gruvbox_material_diagnostic_virtual_text = "colored"
+            let g:gruvbox_material_sign_column_background = 'none'
+
+            colorscheme gruvbox-material
+            ]]
+      --require('onedark').setup {
+      --  -- Set a style preset. 'dark' is default.
+      --  style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
+      --}
+      --require('onedark').load()
+    end,
+  },
+
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -908,20 +942,31 @@ require('lazy').setup({
   },
 })
 
-
-local harpoon = require("harpoon")
+local harpoon = require 'harpoon'
 
 -- REQUIRED
-harpoon:setup({})
+harpoon:setup {}
 -- REQUIRED
 
-vim.keymap.set("n", "<C-a>", function() harpoon:list():append() end,  {desc = '[a] Append to harpoon list'} )
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, {desc = '[e] Open harpoon list'})
+vim.keymap.set('n', '<C-a>', function()
+  harpoon:list():append()
+end, { desc = '[a] Append to harpoon list' })
+vim.keymap.set('n', '<C-e>', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = '[e] Open harpoon list' })
 
-vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+vim.keymap.set('n', '<C-h>', function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set('n', '<C-t>', function()
+  harpoon:list():select(2)
+end)
+vim.keymap.set('n', '<C-n>', function()
+  harpoon:list():select(3)
+end)
+vim.keymap.set('n', '<C-s>', function()
+  harpoon:list():select(4)
+end)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
