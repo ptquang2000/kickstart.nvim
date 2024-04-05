@@ -920,6 +920,37 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
+
+  -- NOTE MyPlugins
+  { import = 'custom.plugins' },
+  {
+    -- Theme inspired by Atom
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      vim.cmd [[
+            " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
+            " Important!!
+            " For dark version.
+            set background=dark
+            " Set contrast.
+            " This configuration option should be placed before `colorscheme gruvbox-material`.
+            " Available values: 'hard', 'medium'(default), 'soft'
+            let g:gruvbox_material_background = 'hard'
+            " For better performance
+            let g:gruvbox_material_better_performance = 1
+            let g:gruvbox_material_enable_italic = 1
+
+            let g:gruvbox_material_diagnostic_text_highlight = 1
+            " let g:gruvbox_material_diagnostic_line_highlight = 1
+            let g:gruvbox_material_diagnostic_virtual_text = "colored"
+            let g:gruvbox_material_sign_column_background = 'none'
+
+            colorscheme gruvbox-material
+            ]]
+    end,
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -942,12 +973,13 @@ require('lazy').setup({
   },
 })
 
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+--
+
+-- Harpoon
 local harpoon = require 'harpoon'
-
--- REQUIRED
 harpoon:setup {}
--- REQUIRED
-
 vim.keymap.set('n', '<C-a>', function()
   harpoon:list():append()
 end, { desc = '[a] Append to harpoon list' })
@@ -968,5 +1000,21 @@ vim.keymap.set('n', '<C-s>', function()
   harpoon:list():select(4)
 end)
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- MyCustomSetup
+vim.opt.incsearch = true
+vim.opt.colorcolumn = '80'
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('x', '<leader>p', [["_dP]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set('n', '<leader>sf', function()
+  require('telescope.builtin').find_files { no_ignore = true }
+end, { desc = '[S]earch [F]iles' })
