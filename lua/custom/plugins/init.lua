@@ -12,4 +12,8 @@ return {
     'tpope/vim-fugitive',
     branch = 'master',
   },
+  {
+    'lervag/vimtex',
+    branch = 'master',
+  },
 }
