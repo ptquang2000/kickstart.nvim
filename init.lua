@@ -322,11 +322,6 @@ require('lazy').setup({
 
             colorscheme gruvbox-material
             ]]
-      --require('onedark').setup {
-      --  -- Set a style preset. 'dark' is default.
-      --  style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
-      --}
-      --require('onedark').load()
     end,
   },
 
