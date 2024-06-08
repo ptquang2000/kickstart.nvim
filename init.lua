@@ -296,35 +296,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    -- Theme inspired by Atom
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      vim.cmd [[
-            " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
-            " Important!!
-            " For dark version.
-            set background=dark
-            " Set contrast.
-            " This configuration option should be placed before `colorscheme gruvbox-material`.
-            " Available values: 'hard', 'medium'(default), 'soft'
-            let g:gruvbox_material_background = 'hard'
-            " For better performance
-            let g:gruvbox_material_better_performance = 1
-            let g:gruvbox_material_enable_italic = 1
-
-            let g:gruvbox_material_diagnostic_text_highlight = 1
-            " let g:gruvbox_material_diagnostic_line_highlight = 1
-            let g:gruvbox_material_diagnostic_virtual_text = "colored"
-            let g:gruvbox_material_sign_column_background = 'none'
-
-            colorscheme gruvbox-material
-            ]]
-    end,
-  },
-
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -750,7 +721,7 @@ require('lazy').setup({
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<TAB>'] = cmp.mapping.select_prev_item()(),
+          ['<TAB>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<S-TAB>'] = cmp.mapping.select_prev_item(),
@@ -923,34 +894,6 @@ require('lazy').setup({
 
   -- NOTE MyPlugins
   { import = 'custom.plugins' },
-  {
-    -- Theme inspired by Atom
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      vim.cmd [[
-            " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
-            " Important!!
-            " For dark version.
-            set background=dark
-            " Set contrast.
-            " This configuration option should be placed before `colorscheme gruvbox-material`.
-            " Available values: 'hard', 'medium'(default), 'soft'
-            let g:gruvbox_material_background = 'hard'
-            " For better performance
-            let g:gruvbox_material_better_performance = 1
-            let g:gruvbox_material_enable_italic = 1
-
-            let g:gruvbox_material_diagnostic_text_highlight = 1
-            " let g:gruvbox_material_diagnostic_line_highlight = 1
-            let g:gruvbox_material_diagnostic_virtual_text = "colored"
-            let g:gruvbox_material_sign_column_background = 'none'
-
-            colorscheme gruvbox-material
-            ]]
-    end,
-  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
