@@ -17,6 +17,10 @@ return {
     branch = 'master',
   },
   {
+    'mbbill/undotree',
+    branch = 'master',
+  },
+  {
     -- Theme inspired by Atom
     'sainnhe/gruvbox-material',
     priority = 1000,
