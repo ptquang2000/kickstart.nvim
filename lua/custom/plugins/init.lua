@@ -12,10 +12,10 @@ return {
     'tpope/vim-fugitive',
     branch = 'master',
   },
-  {
-    'lervag/vimtex',
-    branch = 'master',
-  },
+  --  {
+  --    'lervag/vimtex',
+  --    branch = 'master',
+  --  },
   {
     'mbbill/undotree',
     branch = 'master',

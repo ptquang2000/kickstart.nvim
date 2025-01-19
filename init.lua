@@ -926,7 +926,7 @@ require('lazy').setup({
 --
 
 -- VimTex
-vim.g.vimtex_view_method = 'mupdf'
+-- vim.g.vimtex_view_method = 'mupdf'
 
 -- Harpoon
 local harpoon = require 'harpoon'
